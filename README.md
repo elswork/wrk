@@ -34,7 +34,37 @@ docker run --rm elswork/wrt \
 ```
 or
 ```bash
-make bench SITE=https://www.theworldsworstwebsiteever.com/
+make bench -t4 -c10 -d30s SITE=https://www.theworldsworstwebsiteever.com/
 ```
+
+**OPTIONALLY** you can use these parameters before site URL:
+    -c, --connections: total number of HTTP connections to keep open with
+                       each thread handling N = connections/threads
+
+    -d, --duration:    duration of the test, e.g. 2s, 2m, 2h
+
+    -t, --threads:     total number of threads to use
+
+    -s, --script:      LuaJIT script, see SCRIPTING
+
+    -H, --header:      HTTP header to add to request, e.g. "User-Agent: wrk"
+
+        --latency:     print detailed latency statistics
+
+        --timeout:     record a timeout if a response is not received within
+                       this amount of time.
+
+### LuaJIT Script
+
+```bash
+docker run --rm -v ${CURDIR}/scripts/:/data \
+ elswork/wrt \
+-s delay.lua https://www.theworldsworstwebsiteever.com/
+```
+or
+```bash
+make script SCRIPT=delay.lua SITE=https://www.theworldsworstwebsiteever.com/
+```
+You can user your own LuaJIT script writting it in /scripts/ folder where you'll find some examples.
 
 **[Sponsor me!](https://github.com/sponsors/elswork) Together we will be unstoppable.**

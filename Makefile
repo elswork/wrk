@@ -4,6 +4,7 @@ VER ?= `cat VERSION`
 BASE ?= latest
 BASENAME ?= alpine:$(BASE)
 SITE ?= https://www.theworldsworstwebsiteever.com/
+SCRIPT ?= delay.lua
 ARCH2 ?= armv7l
 ARCH3 ?= aarch64
 GOARCH := $(shell uname -m)
@@ -58,6 +59,11 @@ manifest: ## Create an push manifest
 	$(NAME):$(ARCH2) \
 	$(NAME):$(ARCH3)
 	docker manifest push --purge $(NAME):latest
+console: 
+	docker run -it --rm --entrypoint "/bin/ash" $(NAME):$(GOARCH)
 bench: ## Start wrt benchmark
 	docker run --rm $(NAME):$(GOARCH) \
-	-t4 -c10 -d30s $(SITE)
+	$(SITE)
+script: ## Start wrt LuaJIT script
+	docker run --rm -v ${CURDIR}/scripts/:/data $(NAME):$(GOARCH) \
+	-s $(SCRIPT) $(SITE)
