@@ -34,7 +34,7 @@ docker run --rm elswork/wrk \
 ```
 or
 ```bash
-make bench -t4 -c10 -d30s SITE=https://www.theworldsworstwebsiteever.com/
+make bench PARAM=" -t4 -c10 -d30s https://www.theworldsworstwebsiteever.com/"
 ```
 
 **OPTIONALLY** you can use these parameters before site URL:
@@ -58,12 +58,11 @@ make bench -t4 -c10 -d30s SITE=https://www.theworldsworstwebsiteever.com/
 
 ```bash
 docker run --rm -v ${CURDIR}/scripts/:/data \
- elswork/wrk \
--s delay.lua https://www.theworldsworstwebsiteever.com/
+ elswork/wrk -s delay.lua https://www.theworldsworstwebsiteever.com/
 ```
 or
 ```bash
-make script SCRIPT=delay.lua SITE=https://www.theworldsworstwebsiteever.com/
+make script PARAM=" -s delay.lua https://www.theworldsworstwebsiteever.com/"
 ```
 You can user your own LuaJIT script writting it in /scripts/ folder where you'll find some examples.
 

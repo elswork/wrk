@@ -3,8 +3,7 @@ NAME ?= elswork/$(SNAME)
 VER ?= `cat VERSION`
 BASE ?= latest
 BASENAME ?= alpine:$(BASE)
-SITE ?= https://www.theworldsworstwebsiteever.com/
-SCRIPT ?= delay.lua
+PARAM ?= https://www.theworldsworstwebsiteever.com/
 ARCH2 ?= armv7l
 ARCH3 ?= aarch64
 GOARCH := $(shell uname -m)
@@ -62,8 +61,6 @@ manifest: ## Create an push manifest
 console: 
 	docker run -it --rm --entrypoint "/bin/ash" $(NAME):$(GOARCH)
 bench: ## Start wrt benchmark
-	docker run --rm $(NAME):$(GOARCH) \
-	$(SITE)
+	docker run --rm $(NAME):$(GOARCH) $(PARAM)
 script: ## Start wrt LuaJIT script
-	docker run --rm -v ${CURDIR}/scripts/:/data $(NAME):$(GOARCH) \
-	-s $(SCRIPT) $(SITE)
+	docker run --rm -v ${CURDIR}/scripts/:/data $(NAME):$(GOARCH) $(PARAM)
