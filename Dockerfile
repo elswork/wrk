@@ -5,15 +5,15 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 LABEL mantainer="Eloy Lopez <elswork@gmail.com>" \
-    org.label-schema.build-date=$BUILD_DATE \
-    org.label-schema.name="wrk" \
-    org.label-schema.description="Wrk is a HTTP benchmarking tool capable of generating significant load" \
-    org.label-schema.url="https://deft.work/wrk" \
-    org.label-schema.vcs-ref=$VCS_REF \
-    org.label-schema.vcs-url="https://github.com/elswork/wrk" \
-    org.label-schema.vendor="Deft Work" \
-    org.label-schema.version=$VERSION \
-    org.label-schema.schema-version="1.0"
+    org.opencontainers.image.title="wrk" \
+    org.opencontainers.image.description="Wrk is a HTTP benchmarking tool capable of generating significant load" \
+    org.opencontainers.image.vendor="Deft Work" \
+    org.opencontainers.image.url="https://deft.work/wrk" \
+    org.opencontainers.image.source="https://github.com/elswork/wrk" \
+    org.opencontainers.image.version=$VERSION \ 
+    org.opencontainers.image.created=$BUILD_DATE \
+    org.opencontainers.image.revision=$VCS_REF \
+    org.opencontainers.image.licenses=MIT
 
 RUN apk add --no-cache wrk
 WORKDIR /data

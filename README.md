@@ -10,19 +10,18 @@ A [Docker](http://docker.com) file to build [wrk](https://github.com/wg/wrk) a H
 
 ## Details
 
-- [GitHub](https://github.com/elswork/wrk)
-- [Deft.Work my personal blog](https://deft.work)
+| Website | GitHub | Docker Hub |
+| --- | --- | --- |
+| [Deft.Work my personal blog](https://deft.work) | [wrk](https://github.com/elswork/wrk) | [wrk](https://hub.docker.com/r/elswork/wrk) |
 
-| Docker Hub | Docker Pulls | Docker Stars | Size/Layers |
+| Docker Pulls | Docker Stars | Size | Sponsors |
 | --- | --- | --- | --- |
-| [wrk](https://hub.docker.com/r/elswork/wrk "elswork/wrk on Docker Hub") | [![](https://img.shields.io/docker/pulls/elswork/wrk.svg)](https://hub.docker.com/r/elswork/wrk "wrk on Docker Hub") | [![](https://img.shields.io/docker/stars/elswork/wrk.svg)](https://hub.docker.com/r/elswork/wrk "wrk on Docker Hub") | [![](https://images.microbadger.com/badges/image/elswork/wrk.svg)](https://microbadger.com/images/elswork/wrk "wrk on microbadger.com") |
+| [![Docker pulls](https://img.shields.io/docker/pulls/elswork/wrk.svg)](https://hub.docker.com/r/elswork/wrk "wrk on Docker Hub") | [![Docker stars](https://img.shields.io/docker/stars/elswork/wrk.svg)](https://hub.docker.com/r/elswork/wrk "wrk on Docker Hub") | [![Docker Image size](https://img.shields.io/docker/image-size/elswork/wrk)](https://hub.docker.com/r/elswork/wrk "wrk on Docker Hub") | [![GitHub Sponsors](https://img.shields.io/github/sponsors/elswork)](https://github.com/sponsors/elswork "Sponsor me!") |
 
-## Build Instructions
-~~Build for amd64, armv7l or arm64 architecture (thanks to its [Multi-Arch](https://blog.docker.com/2017/11/multi-arch-all-the-things/) base image)~~
+## Compatible Architectures
 
-```bash
-docker build -t elswork/wrk .
-```
+This image has been builded using [buildx](https://docs.docker.com/buildx/working-with-buildx/) for these architectures: 
+- amd64 arm64 ppc64le s390x 386 arm/v7 arm/v6
 
 ## Usage Example
 
@@ -34,7 +33,7 @@ docker run --rm elswork/wrk \
 ```
 or
 ```bash
-make bench PARAM=" -t4 -c10 -d30s https://www.theworldsworstwebsiteever.com/"
+make start PARAM=" -t4 -c10 -d30s https://www.theworldsworstwebsiteever.com/"
 ```
 
 **OPTIONALLY** you can use these parameters before site URL:
@@ -67,3 +66,7 @@ make script PARAM=" -s delay.lua https://www.theworldsworstwebsiteever.com/"
 You can user your own LuaJIT script writting it in /scripts/ folder where you'll find some examples.
 
 **[Sponsor me!](https://github.com/sponsors/elswork) Together we will be unstoppable.**
+
+Other ways to fund me:
+
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/elswork)](https://github.com/sponsors/elswork) [![Donate PayPal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/donate/?business=LFKA5YRJAFYR6&no_recurring=0&item_name=Open+Source+Donation&currency_code=EUR)
