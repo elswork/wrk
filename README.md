@@ -21,7 +21,7 @@ A [Docker](http://docker.com) file to build [wrk](https://github.com/wg/wrk) a H
 ## Compatible Architectures
 
 This image has been builded using [buildx](https://docs.docker.com/buildx/working-with-buildx/) for these architectures: 
-- amd64 arm64 ppc64le s390x 386 arm/v7 arm/v6
+- amd64 arm64
 
 ## Usage Example
 
